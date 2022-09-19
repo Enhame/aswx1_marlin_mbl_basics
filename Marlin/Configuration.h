@@ -60,7 +60,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(DIGA-Tech, ASWX1 v1.0)" // Who made the changes.        // DIGA-Tech:
+#define STRING_CONFIG_H_AUTHOR "(Enhame, ASWX1 v1.0)" // Who made the changes.        // DIGA-Tech:
 #define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)        // DIGA-Tech:
 
 /**
@@ -1122,7 +1122,7 @@
 #define U_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define V_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define W_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_INVERTING true // Set to true to invert the logic of the probe.        // DIGA-Tech: set to true due to usage of Z min endstop as probe
+#define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.        // DIGA-Tech: set to true due to usage of Z min endstop as probe
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
@@ -1318,7 +1318,7 @@
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
  *   (e.g., an inductive probe or a nozzle-based probe-switch.)
  */
-#define FIX_MOUNTED_PROBE                                  // DIGA-Tech:
+// #define FIX_MOUNTED_PROBE                                  // DIGA-Tech:
 
 /**
  * Use the nozzle as the probe, as with a conductive
@@ -1335,7 +1335,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH                                          // DIGA-Tech:
+#define BLTOUCH                                          // DIGA-Tech:
 
 /**
  * MagLev V4 probe by MDD
@@ -1487,7 +1487,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 }                 // DIGA-Tech: probe offset
+#define NOZZLE_TO_PROBE_OFFSET { 38, -15, -1 }                 // DIGA-Tech: probe offset
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1878,8 +1878,8 @@
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
 //#define AUTO_BED_LEVELING_BILINEAR                         // DIGA-Tech:
-//#define AUTO_BED_LEVELING_UBL                              // DIGA-Tech:
-#define MESH_BED_LEVELING                                  // DIGA-Tech:
+#define AUTO_BED_LEVELING_UBL                              // DIGA-Tech:
+// #define MESH_BED_LEVELING                                  // DIGA-Tech:
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable one of
@@ -1892,10 +1892,10 @@
 /**
  * Auto-leveling needs preheating
  */
-//#define PREHEAT_BEFORE_LEVELING
+#define PREHEAT_BEFORE_LEVELING
 #if ENABLED(PREHEAT_BEFORE_LEVELING)
-  #define LEVELING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
-  #define LEVELING_BED_TEMP     50
+  // #define LEVELING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
+  #define LEVELING_BED_TEMP     75
 #endif
 
 /**
@@ -1916,7 +1916,7 @@
 
 #if ANY(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL, PROBE_MANUALLY)
   // Set a height for the start of manual adjustment
-  #define MANUAL_PROBE_START_Z 0.2  // (mm) Comment out to use the last-measured height
+  // #define MANUAL_PROBE_START_Z 0.2  // (mm) Comment out to use the last-measured height
 #endif
 
 #if ANY(MESH_BED_LEVELING, AUTO_BED_LEVELING_BILINEAR, AUTO_BED_LEVELING_UBL)
@@ -1986,7 +1986,7 @@
   //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
   #define MESH_INSET 10             // Set Mesh bounds as an inset region of the bed                         // DIGA-Tech:
-  #define GRID_MAX_POINTS_X 7       // Don't use more than 15 points per axis, implementation limited.       // DIGA-Tech:
+  #define GRID_MAX_POINTS_X 6       // Don't use more than 15 points per axis, implementation limited.       // DIGA-Tech:
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   //#define UBL_HILBERT_CURVE       // Use Hilbert distribution for less travel when probing multiple points
